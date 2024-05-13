@@ -10,9 +10,17 @@
 
 2. **Prepare the XML File:**
 
-   - After exporting, place the XML file (`example.2024-04-30.xml`) inside the directory containing this script.
+   - After exporting, place the XML file (`mint.WordPress.2024-04-30.xml`) inside the directory containing this script.
 
-3. **Install Required Packages:**
+3. **Update the Script:**
+
+   - Open the `download.py` file.
+   - On line 31, change the file name to match your XML file. For example:
+     ```python
+     xml_file = 'icanq.WordPress.2024-04-30.xml'
+     ```
+
+4. **Install Required Packages:**
 
    - Ensure you have the `requests` package installed.
    - Run the following command in your terminal:
@@ -20,15 +28,14 @@
      pip install requests
      ```
 
-4. **Run the Downloader:**
+5. **Run the Downloader:**
 
    - Execute the script by running:
      ```bash
      python download.py
      ```
 
-5. **Download Media:**
+6. **Download Media:**
    - If the XML file is correctly placed and your internet connection is stable, the media files will be downloaded shortly.
 
 By following these steps, you should be able to download all your media files from the WordPress XML export.
-Your internet connection affect the download speed.
