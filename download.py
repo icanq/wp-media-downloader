@@ -17,16 +17,29 @@ def download_images(urls, download_folder):
     if not os.path.exists(download_folder):
         os.makedirs(download_folder)
 
+    total_files = len(urls)
+    downloaded_files = 0
+
     for url in urls:
+        file_name = os.path.join(download_folder, url.split('/')[-1])
+        if os.path.exists(file_name):
+            print(f"Already downloaded: {file_name}")
+            continue
+
         response = requests.get(url, stream=True)
         if response.status_code == 200:
-            file_name = os.path.join(download_folder, url.split('/')[-1])
             with open(file_name, 'wb') as file:
                 for chunk in response.iter_content(1024):
                     file.write(chunk)
+            downloaded_files += 1
             print(f"Downloaded: {file_name}")
         else:
             print(f"Failed to download: {url}")
+
+    if downloaded_files == 0:
+        print("All files are already downloaded.")
+    else:
+        print(f"Finished downloading {downloaded_files} new files out of {total_files}.")
 
 xml_file = 'mint.WordPress.2024-04-30.xml'
 image_urls = extract_image_urls(xml_file)
